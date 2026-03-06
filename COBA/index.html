@@ -1,740 +1,420 @@
 <!doctype html>
-<html lang="id" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buat kamu orang favorit aku ♡</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'dusty-rose': '#D9A0A0',
-            'dusty-rose-light': '#E8C4C4',
-            'dusty-rose-dark': '#C48B8B',
-            'ivory': '#FFFEF7',
-            'ivory-cream': '#FDF8F3',
-            'soft-gold': '#D4AF37',
-            'soft-gold-light': '#E8D5A3',
-            'sage': '#9CAF88',
-            'sage-light': '#C5D4BC',
-          },
-          fontFamily: {
-            'serif': ['Playfair Display', 'Georgia', 'serif'],
-            'sans': ['Poppins', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You for Being in My Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --dusty-rose: #D9A0A0;
+      --ivory: #fffcf8;
+      --soft-gold: #d4af37;
+      --sage: #9caf88;
+      --ink: #392e2e;
+      --muted: #6c5a5a;
+      --card: rgba(255, 255, 255, 0.8);
+      --shadow: 0 15px 30px rgba(62, 39, 39, 0.12);
+    }
+
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    
-    .polaroid {
-      background: white;
-      padding: 12px 12px 40px 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      transform: rotate(-2deg);
-      transition: transform 0.3s ease;
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--muted);
+      font-family: "Poppins", sans-serif;
+      line-height: 1.6;
     }
-    .polaroid:hover {
-      transform: rotate(0deg) scale(1.02);
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--ink);
+      margin: 0;
     }
-    .polaroid-right {
-      transform: rotate(2deg);
+
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .section { padding: 88px 0; }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 20;
+      background: rgba(255, 252, 248, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(217, 160, 160, 0.25);
     }
-    .polaroid-right:hover {
-      transform: rotate(0deg) scale(1.02);
+
+    .top-nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
     }
-    
-    .timeline-dot::before {
-      content: '';
-      position: absolute;
-      left: -24px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      background: #D9A0A0;
-      border-radius: 50%;
-      border: 3px solid #FFFEF7;
-      box-shadow: 0 0 0 2px #D9A0A0;
-    }
-    
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
-    .stagger-5 { animation-delay: 0.5s; }
-    .stagger-6 { animation-delay: 0.6s; }
-    
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    .heart-beat {
-      animation: heartBeat 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #D9A0A0 0%, #D4AF37 50%, #D9A0A0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .photo-frame {
-      border: 8px solid white;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    
-    .carousel-container {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .carousel-container::-webkit-scrollbar {
-      display: none;
-    }
-    .carousel-item {
-      scroll-snap-align: center;
-      flex-shrink: 0;
-    }
-    
-    .masonry-grid {
+
+    .brand { color: var(--dusty-rose); font-family: "Playfair Display", serif; font-size: 1.4rem; }
+    .menu { display: flex; gap: 14px; flex-wrap: wrap; }
+    .menu a { color: var(--muted); text-decoration: none; font-size: .88rem; }
+    .menu a:hover { color: var(--dusty-rose); }
+
+    .hero {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      place-items: center;
+      position: relative;
+      text-align: center;
+      color: #fff;
+      background: url("../FOTO 12.jpeg") center/cover no-repeat;
+      padding-top: 80px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(35, 23, 23, 0.35);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 760px;
+      padding: 20px;
+    }
+
+    .hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 4.4rem); margin-bottom: 14px; }
+    .hero p { font-size: clamp(1rem, 2.2vw, 1.25rem); margin-bottom: 30px; }
+
+    .btn {
+      display: inline-block;
+      background: var(--dusty-rose);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.alt { background: transparent; border: 1px solid var(--dusty-rose); color: var(--ink); }
+
+    .eyebrow {
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      font-size: .75rem;
+      margin-bottom: .65rem;
+      font-weight: 600;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(217, 160, 160, 0.25);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-body { padding: 18px; }
+
+    .timeline {
+      margin-top: 26px;
+      border-left: 2px solid rgba(217, 160, 160, 0.45);
+      padding-left: 24px;
+      display: grid;
       gap: 20px;
     }
-    
-    .overlay-gradient {
-      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%);
+
+    .timeline div::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--dusty-rose);
+      display: inline-block;
+      margin-left: -30px;
+      margin-right: 11px;
     }
-    
-    .paper-texture {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+
+    .carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 70%;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
     }
-    
-    .section-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #D9A0A0, transparent);
+
+    .slide { scroll-snap-align: center; position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+    .slide img { width: 100%; height: 440px; object-fit: cover; }
+    .caption {
+      position: absolute;
+      inset: auto 0 0;
+      color: #fff;
+      padding: 12px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+      font-family: "Playfair Display", serif;
+    }
+
+    .masonry {
+      columns: 3 220px;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .masonry figure {
+      break-inside: avoid;
+      margin: 0 0 14px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .masonry img { width: 100%; }
+
+    .quote-grid, .uniform-grid, .bouquet-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .quote {
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid rgba(217, 160, 160, 0.35);
+      box-shadow: var(--shadow);
+    }
+
+    .letter {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(217, 160, 160, .25);
+      padding: clamp(20px, 4vw, 52px);
+      text-align: center;
+    }
+
+    .letter p { font-family: "Playfair Display", serif; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: #4a3a3a; }
+
+    .uniform-grid figure, .bouquet-grid figure {
+      margin: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .uniform-grid img, .bouquet-grid img { width: 100%; height: 280px; object-fit: cover; }
+    .label { padding: 10px 12px; font-size: .9rem; }
+
+    .childhood {
+      text-align: center;
+    }
+
+    .childhood img {
+      max-height: 500px;
+      margin: 0 auto;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 16px;
+      border: 1px solid rgba(217, 160, 160, .35);
+      padding: 12px;
+      font-family: inherit;
+      background: rgba(255,255,255,.9);
+    }
+
+    footer {
+      padding: 34px 0 48px;
+      text-align: center;
+      color: #8c7474;
+    }
+
+    @media (max-width: 880px) {
+      .split, .quote-grid, .uniform-grid, .bouquet-grid { grid-template-columns: 1fr; }
+      .carousel { grid-auto-columns: 88%; }
     }
   </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full bg-ivory font-sans text-gray-700 overflow-auto">
-  <div class="min-h-full w-full"><!-- Navigation -->
-   <nav class="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md border-b border-dusty-rose-light/30">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><span class="font-serif text-dusty-rose text-xl">♡</span>
-     <div class="flex gap-6 text-sm"><a href="#hero" class="text-dusty-rose-dark hover:text-dusty-rose transition-colors">Beranda</a> <a href="#story" class="text-dusty-rose-dark hover:text-dusty-rose transition-colors">Cerita</a> <a href="#moments" class="text-dusty-rose-dark hover:text-dusty-rose transition-colors">Momen</a> <a href="#letter" class="text-dusty-rose-dark hover:text-dusty-rose transition-colors">Surat</a>
-     </div>
-    </div>
-   </nav><!-- FOTO 18.jpeg -->
-   <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden"><!-- Background with gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-dusty-rose-light via-ivory-cream to-soft-gold-light"></div>
-    <div class="absolute inset-0 paper-texture"></div><!-- Decorative elements -->
-    <div class="absolute top-20 left-10 text-6xl opacity-20 float-animation">
-     🌸
-    </div>
-    <div class="absolute bottom-32 right-16 text-5xl opacity-20 float-animation" style="animation-delay: -2s;">
-     🌷
-    </div>
-    <div class="absolute top-40 right-20 text-4xl opacity-15 float-animation" style="animation-delay: -4s;">
-     ✨
-    </div><!-- Foto 15.jpeg -->
-    <div class="absolute inset-0 flex items-center justify-center opacity-20">
-     <div class="w-96 h-96 rounded-full bg-gradient-to-br from-dusty-rose to-soft-gold blur-3xl"></div>
-    </div>
-    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-     <div class="mb-8 fade-in"><span class="text-6xl heart-beat inline-block">💕</span>
-     </div>
-     <h1 id="heroHeadline" class="font-serif text-4xl md:text-6xl lg:text-7xl text-dusty-rose-dark mb-6 fade-in stagger-1 leading-tight">UCAPAN TERIMAKASIH DAN RASA CINTA<br>
-      DARI FANS NOMOR 1</h1>
-     <p id="heroSubheadline" class="font-sans text-lg md:text-xl text-gray-600 mb-10 fade-in stagger-2 max-w-2xl mx-auto">Untukmu yang membuat hariku lebih penuh akan cinta, humor dan buat hariku lebih berwarna</p><a href="#story" class="inline-block bg-dusty-rose hover:bg-dusty-rose-dark text-white font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 fade-in stagger-3"> Untukmu ♡ </a> <!-- Scroll indicator -->
-     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-in stagger-4">
-      <div class="w-6 h-10 border-2 border-dusty-rose rounded-full flex justify-center pt-2">
-       <div class="w-1.5 h-3 bg-dusty-rose rounded-full animate-bounce"></div>
+</head>
+<body>
+  <nav class="top-nav">
+    <div class="container">
+      <div class="brand">for her ♡</div>
+      <div class="menu">
+        <a href="#hero">Home</a>
+        <a href="#story">Story</a>
+        <a href="#moments">Moments</a>
+        <a href="#funny">Funny</a>
+        <a href="#letter">Letter</a>
+        <a href="#closing">Thanks</a>
       </div>
-     </div>
     </div>
-   </section><!-- Our Story Section -->
-   <section id="story" class="py-24 bg-ivory-cream relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-       <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">First chapter</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">si cewe galak</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div>
-     <div class="grid md:grid-cols-2 gap-12 items-center mb-20"><!-- First Chat Photo -->
-      <div class="order-2 md:order-1">
-       <div class="polaroid mx-auto max-w-sm bg-white">
-        <div class="aspect-[4/5] bg-gradient-to-br from-dusty-rose-light to-sage-light rounded flex items-center justify-center">
-         <div class="text-center p-6"><span class="text-5xl mb-4 block">💬</span>
-         </div>
-        </div>
-        <p class="font-serif text-gray-600 text-center mt-4 text-sm">Chat pertama kita, dari awal ngobrol di roblox sampek ke discord terus ke instagram dan ke WhatsAap? </p>
-       </div>
-      </div>
-      <div class="order-1 md:order-2">
-       <p id="storyText" class="font-sans text-gray-600 text-lg leading-relaxed">Siapa yang bakal ngira dari moment kamu nanyi di game itu bakalan ngebawa aku ke ke cerita yang lebih seru, penuh akan tawa, yang ngebuat aku jadi nyaman. Dari "ehh" pertama hingga hari ini, kamu selalu ada di pikiranku</p>
-       <p class="font-sans text-gray-600 text-lg leading-relaxed mt-4">Setiap hari dengeriin cerita kamu kerasa kayak kisah baru yang ingin ku dengar. gak pernah ngebosenin,kalau ga ketawa ya ngambek sama sama. ✨</p>
-      </div>
-     </div><!-- Timeline -->
-     <div class="max-w-3xl mx-auto">
-      <h3 class="font-serif text-2xl text-dusty-rose-dark text-center mb-12"> Perjalanan Kita sejauh ini</h3>
-      <div class="relative border-l-2 border-dusty-rose-light ml-6 md:ml-0 md:mx-auto md:max-w-xl pl-8 space-y-12"><!-- Timeline Item 1 -->
-       <div class="relative timeline-dot"><span class="text-soft-gold font-medium text-sm">Pe8</span>
-        <h4 class="font-serif text-xl text-dusty-rose-dark mt-1">Chat Pertama Kita</h4>
-        <p class="text-gray-600 mt-2">Semuanya bermula dari satu pesan sederhana. Siapa tahu ternyata jodoh wakwkak 💫</p>
-       </div><!-- Timeline Item 2 -->
-       <div class="relative timeline-dot"><span class="text-soft-gold font-medium text-sm">Second Chapter</span>
-        <h4 class="font-serif text-xl text-dusty-rose-dark mt-1">Humor Bersama</h4>
-        <p class="text-gray-600 mt-2">Dari salah asbun sampai cerita random jam 12 malam. Semuanya jadi memori di hati kuu  😆</p>
-       </div><!-- Timeline Item 3 -->
-       <div class="relative timeline-dot"><span class="text-soft-gold font-medium text-sm">Hal yang Membuatku Jatuh Cinta</span>
-        <h4 class="font-serif text-xl text-dusty-rose-dark mt-1">Sifat kamu</h4>
-        <p class="text-gray-600 mt-2"> mulai dari effort kamu buat aku, sifat kamu yang kadang tegas, kadang melow yang ngebuat aku percaya kalau kamu terbuka sama aku, terus juga hal-hal kecil yang ngebuat aku yakin kamu orangnya. 💕</p>
-       </div>
-      </div>
-     </div><!-- PHOTO 21.jpeg -->
-     <div class="mt-20 text-center">
-      <div class="polaroid-right inline-block mx-auto max-w-xs bg-white">
-       <div class="aspect-square bg-gradient-to-br from-soft-gold-light to-dusty-rose-light rounded flex items-center justify-center overflow-hidden">
-        <img src="/assets/FOTO_21_1772745341836.jpeg" alt="Foto Masa Kecil" class="w-full h-full object-cover">
-       </div>
-       <p class="font-serif text-gray-600 text-center mt-4 text-sm">Flashback kecil emang dari dulu sudah manis ya? 🥰</p>
-      </div>
-     </div>
-    </div>
-   </section><!-- Moments Gallery Section -->
-   <section id="moments" class="py-24 bg-white relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Galeri Kenangan</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Momen Berharga buat aku</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div><!-- PHOTO 15.jpeg -->
-     <div class="PHOTO 15.jpeg gap-6 pb-8 px-4 -mx-4"><!-- Carousel Item 1 - Main Photo -->
-      <div class="PHOTO 15.jpeg w-80 md:w-96">
-       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gradient-to-br from-dusty-rose to-dusty-rose-dark">
-        <img src="/assets/FOTO_11_1772745359678.jpeg" alt="Foto Utama 1" class="w-full h-full object-cover">
-        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
-         <p class="font-serif text-white text-lg">ini fineshyt guehh ✨</p>
-        </div>
-       </div>
-      </div><!-- FOTO 2.jpeg -->
-      <div class="FOTO 2.jpeg w-80 md:w-96">
-       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gradient-to-br from-sage to-sage-light">
-        <img src="/assets/FOTO_2_1772745341840.jpeg" alt="Screenshot VC" class="w-full h-full object-cover">
-        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
-         <p class="font-serif text-white text-lg">Ketawa bareng lewat layar suaranya bikin aku kangen 💕</p>
-        </div>
-       </div>
-      </div><!-- FOTO 14.jpeg -->
-      <div class="carousel-item w-80 md:w-96">
-       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gradient-to-br from-soft-gold to-soft-gold-light">
-        <img src="/assets/FOTO_15_1772745359676.jpeg" alt="Foto Utama 2" class="w-full h-full object-cover">
-        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
-         <p class="font-serif text-white text-lg">Setiap foto bersamamu adalah favorit 🌸</p>
-        </div>
-       </div>
-      </div><!-- FOTO 16.jpeg -->
-      <div class="FOTO 16.jpeg w-80 md:w-96">
-       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] bg-gradient-to-br from-dusty-rose-dark to-dusty-rose">
-        <img src="/assets/FOTO_16_1772745359674.jpeg" alt="Foto Buket" class="w-full h-full object-cover">
-        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
-         <p class="font-serif text-white text-lg">Buket favoritku isinya kamu semuaa wakakwkakw 🌷</p>
-        </div>
-       </div>
-      </div>
-     </div><!-- Scroll hint -->
-     <p class="text-center text-gray-400 text-sm mt-4">← Geser untuk melihat cerita lebih banyak →</p><!-- Masonry Grid -->
-     <div class="mt-20">
-      <h3 class="font-serif text-2xl text-dusty-rose-dark text-center mb-10">Lebih Banyak Kenangan</h3>
-      <div class="masonry-grid"><!-- Grid Item 1 -->
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <img src="/assets/FOTO_3_1772745341839.jpeg" alt="Galeri 1" class="w-full h-full object-cover">
-       </div><!-- Grid Item 2 -->
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <img src="/assets/FOTO_4_1772745341840.jpeg" alt="Galeri 2" class="w-full h-full object-cover">
-       </div><!-- Grid Item 3 -->
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <img src="/assets/FOTO_5_1772745341840.jpeg" alt="Galeri 3" class="w-full h-full object-cover">
-       </div><!-- Grid Item 4 -->
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <img src="/assets/FOTO_6_1772745341839.jpeg" alt="Galeri 4" class="w-full h-full object-cover">
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Funny Moments Section -->
-   <section id="funny" class="py-24 bg-gradient-to-br from-ivory-cream to-dusty-rose-light/30 relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-4xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Tawa Kita</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Momen Lucu 😆</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div>
-     <div class="grid md:grid-cols-2 gap-8"><!-- Funny Moment 1 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">😂</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Salah Kirim Stiker</h4>
-         <p class="text-gray-600">"Waktu kamu salah kirim stiker dan aku pikir itu kode rahasia..."</p>
-        </div>
-       </div>
-      </div><!-- Funny Moment 2 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">🤦‍♀️</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Typo Legendaris</h4>
-         <p class="text-gray-600">"Yang penting maksudnya sampai, kan? ...kan?" 😅</p>
-        </div>
-       </div>
-      </div><!-- Funny Moment 3 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">😴</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Ketiduran Sambil Chat</h4>
-         <p class="text-gray-600">"Reply terakhir: 'iya' — 3 jam kemudian: 'eh sorry ketiduran'"</p>
-        </div>
-       </div>
-      </div><!-- Funny Moment 4 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">🎤</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Voice Note Random</h4>
-         <p class="text-gray-600">"VN 5 menit tapi isinya cuma cerita drama tetangga" 🎭</p>
-        </div>
-       </div>
-      </div><!-- Funny Moment 5 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">📱</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Screenshot Lucu</h4>
-         <p class="text-gray-600">"Koleksi screenshot chat kita bisa jadi buku komedi"</p>
-        </div>
-       </div>
-      </div><!-- Funny Moment 6 -->
-      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-       <div class="flex items-start gap-4"><span class="text-3xl">🍕</span>
-        <div>
-         <h4 class="font-serif text-dusty-rose-dark text-lg mb-2">Debat Makanan</h4>
-         <p class="text-gray-600">"Diskusi serius jam 1 pagi tentang pizza terbaik" 🤔</p>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Love Letter Section -->
-   <section id="letter" class="py-24 bg-white relative overflow-hidden">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="absolute top-10 left-10 text-8xl opacity-10">
-     💌
-    </div>
-    <div class="absolute bottom-10 right-10 text-8xl opacity-10">
-     💕
-    </div>
-    <div class="max-w-3xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-12"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Dari Hatiku</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Surat Cinta</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div>
-     <div class="bg-ivory-cream rounded-3xl p-8 md:p-12 shadow-xl border border-dusty-rose-light/30">
-      <div class="text-center mb-8"><span class="text-4xl">💝</span>
-      </div>
-      <p class="font-serif text-gray-700 text-lg md:text-xl leading-relaxed mb-6 italic">Sayangku,</p>
-      <p id="loveLetter" class="font-serif text-gray-700 text-lg md:text-xl leading-relaxed mb-6">Kamu adalah alasan banyak hal kecil jadi besar: senyum di pagi hari, alasan secangkir kopi tidak terasa pahit, dan alasan aku percaya pada keberuntungan. Terima kasih sudah memilih untuk dekat. Aku menyayangimu — bukan karena kamu sempurna, tapi karena kamu membuatku ingin jadi lebih baik.</p>
-      <p class="font-serif text-gray-700 text-lg md:text-xl leading-relaxed mb-6">Setiap hari bersamamu adalah hadiah. Setiap tawa adalah musik. Dan setiap "selamat malam" darimu adalah doa terbaik sebelum tidur.</p>
-      <p class="font-serif text-gray-700 text-lg md:text-xl leading-relaxed">Terima kasih sudah menjadi kamu. Terima kasih sudah hadir. 💕</p>
-      <div class="text-right mt-8">
-       <p class="font-serif text-dusty-rose-dark text-xl italic">Dengan cinta,</p>
-       <p class="font-serif text-dusty-rose-dark text-2xl mt-2">— Aku yang mencintaimu ♡</p>
-      </div>
-     </div>
-     <div class="text-center mt-10"><a href="#moments" class="inline-flex items-center gap-2 text-dusty-rose hover:text-dusty-rose-dark transition-colors font-medium"> <span>Lihat Lebih Banyak Cerita</span>
-       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-       </svg></a>
-     </div>
-    </div>
-   </section><!-- Bouquet Section -->
-   <section id="bouquet" class="py-24 bg-gradient-to-br from-dusty-rose-light/50 to-ivory relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-5xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Bunga Untukmu</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Buket Favorit 💐</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div>
-     <div class="grid md:grid-cols-2 gap-12 items-center"><!-- Main Bouquet Photo -->
-      <div class="relative">
-       <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-dusty-rose to-dusty-rose-dark">
-        <img src="/assets/FOTO_16_1772745359674.jpeg" alt="Buket Utama" class="w-full h-full object-cover">
-       </div><!-- Decorative elements -->
-       <div class="absolute -top-4 -right-4 w-24 h-24 bg-soft-gold-light rounded-full blur-2xl opacity-50"></div>
-       <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-dusty-rose-light rounded-full blur-2xl opacity-50"></div>
-      </div>
-      <div>
-       <h3 class="font-serif text-2xl text-dusty-rose-dark mb-6">Kenapa Ini Favorit?</h3>
-       <p class="text-gray-600 text-lg leading-relaxed mb-6">Buket ini istimewa bukan karena harganya, bukan karena ukurannya — tapi karena momen saat kamu memberikannya. Setiap kelopak seperti menyimpan cerita kita. 🌷</p>
-       <p class="text-gray-600 text-lg leading-relaxed mb-8">Warna-warnanya mengingatkanku pada senyummu — hangat, cerah, dan selalu membuat hari lebih indah.</p><!-- Small bouquet details grid -->
-       <div class="grid grid-cols-3 gap-3">
-        <div class="aspect-square rounded-xl bg-gradient-to-br from-sage-light to-sage flex items-center justify-center"><span class="text-2xl">🌸</span>
-        </div>
-        <div class="aspect-square rounded-xl bg-gradient-to-br from-soft-gold-light to-soft-gold flex items-center justify-center"><span class="text-2xl">🌺</span>
-        </div>
-        <div class="aspect-square rounded-xl bg-gradient-to-br from-dusty-rose-light to-dusty-rose flex items-center justify-center"><span class="text-2xl">🌷</span>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Uniform Section -->
-   <section id="uniform" class="py-24 bg-white relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-5xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Tampil Keren</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Galeri Seragam 👔</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-      <p class="text-gray-600 mt-6 max-w-xl mx-auto">Keren &amp; berwibawa — tapi tetap bikin hatiku meleleh 💕</p>
-     </div><!-- 2x3 Grid -->
-     <div class="grid grid-cols-2 md:grid-cols-3 gap-6"><!-- Uniform Photo 1 -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-dusty-rose to-dusty-rose-dark flex items-center justify-center relative">
-         <div class="text-center text-white"><span class="text-4xl">👔</span>
-          <p class="text-sm mt-2">Foto 17</p>
-         </div>
-         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <p class="text-white font-serif text-sm">Keren banget di sini! ✨</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Uniform Photo 2 -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-sage to-sage-light flex items-center justify-center relative">
-         <div class="text-center text-white"><span class="text-4xl">👔</span>
-          <p class="text-sm mt-2">Foto 18</p>
-         </div>
-         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <p class="text-white font-serif text-sm">Matanya tetap lembut 💕</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Uniform Photo 3 -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-soft-gold to-soft-gold-light flex items-center justify-center relative">
-         <div class="text-center text-white"><span class="text-4xl">👔</span>
-          <p class="text-sm mt-2">Foto 19</p>
-         </div>
-         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <p class="text-white font-serif text-sm">Senyumnya bikin hari cerah ☀️</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Uniform Photo 4 -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-dusty-rose-dark to-dusty-rose flex items-center justify-center relative">
-         <div class="text-center text-white"><span class="text-4xl">👔</span>
-          <p class="text-sm mt-2">Foto 20</p>
-         </div>
-         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <p class="text-white font-serif text-sm">Profesional &amp; manis 🌸</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Uniform Photo 5 -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-sage-light to-sage flex items-center justify-center relative">
-         <div class="text-center text-white"><span class="text-4xl">👔</span>
-          <p class="text-sm mt-2">Foto 21</p>
-         </div>
-         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <p class="text-white font-serif text-sm">Favorit! 💯</p>
-         </div>
-        </div>
-       </div>
-      </div><!-- Placeholder/Extra -->
-      <div class="group">
-       <div class="photo-frame rounded-xl overflow-hidden">
-        <div class="aspect-[3/4] bg-gradient-to-br from-ivory-cream to-dusty-rose-light flex items-center justify-center relative border-2 border-dashed border-dusty-rose-light">
-         <div class="text-center text-dusty-rose"><span class="text-4xl">➕</span>
-          <p class="text-sm mt-2">Foto Tambahan</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Childhood Section -->
-   <section id="childhood" class="py-24 bg-gradient-to-br from-soft-gold-light/30 to-ivory relative">
-    <div class="absolute inset-0 paper-texture"></div>
-    <div class="max-w-4xl mx-auto px-6 relative z-10">
-     <div class="text-center mb-16"><span class="text-dusty-rose text-sm font-medium tracking-widest uppercase">Nostalgia</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-dusty-rose-dark mt-3">Masa Kecil 👶</h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-soft-gold to-transparent mx-auto mt-6"></div>
-     </div>
-     <div class="flex flex-col items-center"><!-- Main Childhood Photo -->
-      <div class="polaroid max-w-md mx-auto bg-white mb-12">
-       <div class="aspect-square bg-gradient-to-br from-soft-gold-light to-dusty-rose-light rounded flex items-center justify-center">
-        <div class="text-center p-8"><span class="text-7xl mb-4 block">👶</span>
-         <p class="font-serif text-dusty-rose-dark text-xl">Foto Masa Kecil</p>
-         <p class="text-sm text-gray-500 mt-2">Foto nomor 22</p>
-        </div>
-       </div>
-       <p class="font-serif text-gray-600 text-center mt-6 text-lg">Dari kecil sampai sekarang — tetap mempesona 🥰</p>
-      </div><!-- Timeline from childhood to now -->
-      <div class="flex items-center gap-4 flex-wrap justify-center">
-       <div class="bg-white rounded-full px-6 py-3 shadow-md"><span class="font-serif text-dusty-rose-dark">Masa Kecil 👶</span>
-       </div>
-       <div class="text-soft-gold text-2xl">
-        →
-       </div>
-       <div class="bg-white rounded-full px-6 py-3 shadow-md"><span class="font-serif text-dusty-rose-dark">Remaja 🌸</span>
-       </div>
-       <div class="text-soft-gold text-2xl">
-        →
-       </div>
-       <div class="bg-dusty-rose rounded-full px-6 py-3 shadow-md"><span class="font-serif text-white">Sekarang 💕</span>
-       </div>
-      </div>
-      <p class="text-center text-gray-600 mt-8 max-w-lg">Perjalanan waktu yang luar biasa. Dari foto kecil ini sampai hari ini — kamu selalu istimewa.</p>
-     </div>
-    </div>
-   </section><!-- Closing Section -->
-   <section id="closing" class="py-24 bg-gradient-to-br from-dusty-rose to-dusty-rose-dark relative overflow-hidden">
-    <div class="absolute inset-0 paper-texture opacity-50"></div>
-    <div class="absolute top-10 left-10 text-8xl opacity-20 text-white">
-     💕
-    </div>
-    <div class="absolute bottom-10 right-10 text-8xl opacity-20 text-white">
-     ✨
-    </div>
-    <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
-     <div class="mb-8"><span class="text-6xl heart-beat inline-block">💝</span>
-     </div>
-     <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Terima Kasih</h2>
-     <p class="text-white/90 text-lg md:text-xl mb-10 max-w-xl mx-auto">Untuk setiap tawa, setiap cerita, dan setiap momen. Kamu adalah berkah terindah dalam hidupku.</p><!-- Personal Message Box -->
-     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20"><label class="block text-white/80 text-sm mb-3 font-medium">Pesan Pribadi:</label> <textarea id="personalMessage" class="w-full bg-white/20 border border-white/30 rounded-xl p-4 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 resize-none h-32" placeholder="Tulis pesan pribadimu di sini sebelum mengirim..."></textarea>
-     </div>
-     <div class="space-y-4">
-      <p class="font-serif text-white text-2xl italic">Untukmu, selalu ♡</p>
-      <p class="text-white/70 text-sm">Dengan segala cinta — dari aku yang mencintaimu</p>
-     </div>
-     <div class="mt-12"><a href="#hero" class="inline-flex items-center gap-2 bg-white text-dusty-rose font-medium px-8 py-4 rounded-full hover:bg-ivory transition-colors shadow-lg"> <span>Kembali ke Atas</span>
-       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-       </svg></a>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer class="bg-ivory-cream py-8 text-center">
-    <p class="text-gray-500 text-sm">Dibuat dengan 💕 untukmu</p>
-    <p class="text-dusty-rose font-serif text-lg mt-2">♡ 2024 ♡</p>
-   </footer>
-  </div>
-  <script>
-    // Default configuration
-    const defaultConfig = {
-      hero_headline: 'Terima Kasih Telah Hadir dalam Hidupku',
-      hero_subheadline: 'Untukmu — yang membuat hariku lebih hangat, lebih lucu, dan lebih berwarna',
-      story_text: 'Siapa sangka satu pesan singkat akan membawa kita ke rangkaian tawa, kejutan, dan kenyamanan ini. Dari "halo" pertama hingga malam-malam panjang — kamu selalu ada di sana.',
-      love_letter: 'Kamu adalah alasan banyak hal kecil jadi besar: senyum di pagi hari, alasan secangkir kopi tidak terasa pahit, dan alasan aku percaya pada keberuntungan. Terima kasih sudah memilih untuk dekat. Aku menyayangimu — bukan karena kamu sempurna, tapi karena kamu membuatku ingin jadi lebih baik.',
-      closing_message: '',
-      background_color: '#D9A0A0',
-      surface_color: '#FFFEF7',
-      text_color: '#374151',
-      primary_action_color: '#D9A0A0',
-      secondary_action_color: '#D4AF37',
-      font_family: 'Playfair Display',
-      font_size: 16
-    };
+  </nav>
 
-    // Initialize Element SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange: async (config) => {
-          // Update hero headline
-          const heroHeadline = document.getElementById('heroHeadline');
-          if (heroHeadline) {
-            heroHeadline.textContent = config.hero_headline || defaultConfig.hero_headline;
-          }
-          
-          // Update hero subheadline
-          const heroSubheadline = document.getElementById('heroSubheadline');
-          if (heroSubheadline) {
-            heroSubheadline.textContent = config.hero_subheadline || defaultConfig.hero_subheadline;
-          }
-          
-          // Update story text
-          const storyText = document.getElementById('storyText');
-          if (storyText) {
-            storyText.textContent = config.story_text || defaultConfig.story_text;
-          }
-          
-          // Update love letter
-          const loveLetter = document.getElementById('loveLetter');
-          if (loveLetter) {
-            loveLetter.textContent = config.love_letter || defaultConfig.love_letter;
-          }
-          
-          // Update personal message
-          const personalMessage = document.getElementById('personalMessage');
-          if (personalMessage && config.closing_message) {
-            personalMessage.value = config.closing_message;
-          }
-          
-          // Apply font family
-          const fontFamily = config.font_family || defaultConfig.font_family;
-          const serifElements = document.querySelectorAll('.font-serif');
-          serifElements.forEach(el => {
-            el.style.fontFamily = `${fontFamily}, Georgia, serif`;
-          });
-          
-          // Apply font size scaling
-          const baseSize = config.font_size || defaultConfig.font_size;
-          document.documentElement.style.fontSize = `${baseSize}px`;
-          
-          // Apply colors
-          const bgColor = config.background_color || defaultConfig.background_color;
-          const surfaceColor = config.surface_color || defaultConfig.surface_color;
-          const textColor = config.text_color || defaultConfig.text_color;
-          const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
-          const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
-          
-          // Update CSS custom properties for dynamic theming
-          document.documentElement.style.setProperty('--dusty-rose', bgColor);
-          document.documentElement.style.setProperty('--ivory', surfaceColor);
-          document.documentElement.style.setProperty('--text-color', textColor);
-          document.documentElement.style.setProperty('--primary', primaryColor);
-          document.documentElement.style.setProperty('--secondary', secondaryColor);
-        },
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (value) => {
-                config.background_color = value;
-                window.elementSdk.setConfig({ background_color: value });
-              }
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (value) => {
-                config.surface_color = value;
-                window.elementSdk.setConfig({ surface_color: value });
-              }
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (value) => {
-                config.text_color = value;
-                window.elementSdk.setConfig({ text_color: value });
-              }
-            },
-            {
-              get: () => config.primary_action_color || defaultConfig.primary_action_color,
-              set: (value) => {
-                config.primary_action_color = value;
-                window.elementSdk.setConfig({ primary_action_color: value });
-              }
-            },
-            {
-              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
-              set: (value) => {
-                config.secondary_action_color = value;
-                window.elementSdk.setConfig({ secondary_action_color: value });
-              }
-            }
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => config.font_family || defaultConfig.font_family,
-            set: (value) => {
-              config.font_family = value;
-              window.elementSdk.setConfig({ font_family: value });
-            }
-          },
-          fontSizeable: {
-            get: () => config.font_size || defaultConfig.font_size,
-            set: (value) => {
-              config.font_size = value;
-              window.elementSdk.setConfig({ font_size: value });
-            }
-          }
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
-          ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
-          ['story_text', config.story_text || defaultConfig.story_text],
-          ['love_letter', config.love_letter || defaultConfig.love_letter],
-          ['closing_message', config.closing_message || defaultConfig.closing_message]
-        ])
-      });
-    }
+  <header id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Thank you for coming into my life.</h1>
+      <p>For you — who makes my day warmer, funnier, and more colorful.</p>
+      <a class="btn" href="#story">For you</a>
+    </div>
+  </header>
 
-    // Smooth scroll for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
+  <section id="story" class="section">
+    <div class="container">
+      <p class="eyebrow">Our story</p>
+      <h2>Childhood → First Chat → Us</h2>
+      <div class="split" style="margin-top:24px;">
+        <article class="card">
+          <img src="../FOTO 10.jpeg" alt="First chat screenshot moment" style="height:340px; width:100%; object-fit:cover;" />
+          <div class="card-body">
+            <strong>First Meeting</strong>
+            <p>Who would have thought a single text message would lead us to this series of laughs, surprises, and comfort.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="../foto 1.jpg" alt="Childhood flashback photo" style="height:340px; width:100%; object-fit:cover;" />
+          <div class="card-body">
+            <strong>Flashback</strong>
+            <p>From the first “hello” to the long nights—you were always there.</p>
+          </div>
+        </article>
+      </div>
+      <div class="timeline">
+        <div><strong>First Meeting.</strong> A shy hello turned into our daily ritual.</div>
+        <div><strong>Funny Moments.</strong> Wrong stickers, random typos, and late-night giggles.</div>
+        <div><strong>What Made Me Fall in Love.</strong> Your gentle heart, your strength, and your honest care.</div>
+      </div>
+    </div>
+  </section>
 
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+  <section id="moments" class="section" style="background:#fff;">
+    <div class="container">
+      <p class="eyebrow">Main gallery</p>
+      <h2>Spotlight memories (11–15)</h2>
+      <div class="carousel" style="margin-top:22px;">
+        <figure class="slide"><img src="../FOTO 11.jpeg" alt="Main photo 11" /><figcaption class="caption">11 · Our first chat — who made the typo first?</figcaption></figure>
+        <figure class="slide"><img src="../FOTO 12.jpeg" alt="Main photo 12" /><figcaption class="caption">12 · Laughing together on screen, still my favorite sound.</figcaption></figure>
+        <figure class="slide"><img src="../FOTO 13.jpeg" alt="Main photo 13" /><figcaption class="caption">13 · A quiet frame, but full of comfort.</figcaption></figure>
+        <figure class="slide"><img src="../FOTO 14.jpeg" alt="Main photo 14" /><figcaption class="caption">14 · A little nostalgia—you’re still as sweet as ever.</figcaption></figure>
+        <figure class="slide"><img src="../FOTO 15.jpeg" alt="Main photo 15" /><figcaption class="caption">15 · Soft smile, loud heartbeat.</figcaption></figure>
+      </div>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+      <div class="masonry">
+        <figure><img src="../FOTO 2.jpeg" alt="Memory gallery 2" /></figure>
+        <figure><img src="../FOTO 3.jpeg" alt="Memory gallery 3" /></figure>
+        <figure><img src="../FOTO 4.jpeg" alt="Memory gallery 4" /></figure>
+        <figure><img src="../FOTO 5.jpeg" alt="Memory gallery 5" /></figure>
+        <figure><img src="../FOTO 6.jpeg" alt="Memory gallery 6" /></figure>
+        <figure><img src="../FOTO 7.jpeg" alt="Memory gallery 7" /></figure>
+        <figure><img src="../FOTO 8.jpeg" alt="Memory gallery 8" /></figure>
+        <figure><img src="../FOTO 9.jpeg" alt="Memory gallery 9" /></figure>
+      </div>
+    </div>
+  </section>
 
-    // Observe sections for animation
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d7c1202f150e78d',t:'MTc3Mjc0NDYzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <section id="funny" class="section">
+    <div class="container">
+      <p class="eyebrow">Funny moments</p>
+      <h2>3–6 little chaos memories 😄</h2>
+      <div class="quote-grid" style="margin-top:20px;">
+        <article class="quote">😂 “The time you sent the wrong sticker and I thought it was a secret code.”</article>
+        <article class="quote">🤭 “You said ‘just 5 minutes’ then told stories for one hour.”</article>
+        <article class="quote">🫶 “When we tried to be serious but ended up laughing at our own typo.”</article>
+        <article class="quote">😆 “Your random expressions during VC deserve an award.”</article>
+        <article class="quote">🙈 “I act cool, but your messages still make me grin instantly.”</article>
+        <article class="quote">✨ “Our chat is half romance, half comedy, all favorite.”</article>
+      </div>
+    </div>
+  </section>
+
+  <section id="letter" class="section" style="background:#fff;">
+    <div class="container">
+      <p class="eyebrow">Love letter</p>
+      <div class="letter">
+        <h2 style="margin-bottom:14px;">To my favorite person</h2>
+        <p>
+          You are the reason many small things become big: a smile in the morning,
+          the reason a cup of coffee doesn’t taste bitter, and the reason I still believe in luck.
+          Thank you for choosing to be close. I love you—not because you’re perfect,
+          but because you make me want to be better.
+        </p>
+        <a href="#moments" class="btn alt">Read More Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="bouquet" class="section">
+    <div class="container">
+      <p class="eyebrow">Favorite bouquet</p>
+      <h2>Photo 16 — my favorite bouquet</h2>
+      <div class="split" style="margin-top:24px; align-items:start;">
+        <figure class="card">
+          <img src="../FOTO 16.jpeg" alt="Bouquet hero photo" style="height:470px; object-fit:cover; width:100%;" />
+          <figcaption class="card-body">The soft colors, the warm tone, and the memory of that day are why this one is my favorite.</figcaption>
+        </figure>
+        <div class="bouquet-grid">
+          <figure><img src="../FOTO 12.jpeg" alt="Bouquet detail mood 1" /><figcaption class="label">Soft tone like your voice.</figcaption></figure>
+          <figure><img src="../FOTO 13.jpeg" alt="Bouquet detail mood 2" /><figcaption class="label">A calm and sweet frame.</figcaption></figure>
+          <figure><img src="../FOTO 15.jpeg" alt="Bouquet detail mood 3" /><figcaption class="label">Favorite smile energy.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="uniform" class="section" style="background:#fff;">
+    <div class="container">
+      <p class="eyebrow">Uniform page</p>
+      <h2>Photos 17–21 in a 2×3 style gallery</h2>
+      <div class="uniform-grid" style="margin-top:22px;">
+        <figure><img src="../FOTO 17.jpeg" alt="Uniform 17" /><figcaption class="label">Here you look sharp — but your eyes are still soft.</figcaption></figure>
+        <figure><img src="../FOTO 18.jpeg" alt="Uniform 18" /><figcaption class="label">Cool and dignified, still very cute.</figcaption></figure>
+        <figure><img src="../FOTO 19.jpeg" alt="Uniform 19" /><figcaption class="label">This one is elegant and fearless.</figcaption></figure>
+        <figure><img src="../FOTO 20.jpeg" alt="Uniform 20" /><figcaption class="label">Confident pose, warm heart.</figcaption></figure>
+        <figure><img src="../FOTO 21.jpeg" alt="Uniform 21" /><figcaption class="label">A look that always makes me proud.</figcaption></figure>
+        <figure><img src="../FOTO 11.jpeg" alt="Extra memory" /><figcaption class="label">Bonus frame: still my favorite person.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="childhood" class="section">
+    <div class="container childhood">
+      <p class="eyebrow">Childhood page</p>
+      <h2>From childhood to now — still captivating</h2>
+      <img src="../foto 1.jpg" alt="Childhood portrait" style="margin-top:26px;" />
+      <p style="max-width:680px; margin:16px auto 0;">A little nostalgia in one frame: from your younger days to today, you still carry the same softness that made me fall in love.</p>
+    </div>
+  </section>
+
+  <section id="closing" class="section" style="background:#fff7f7;">
+    <div class="container">
+      <p class="eyebrow">Closing</p>
+      <h2>Thank you, always.</h2>
+      <p>For you, always — in every season, in every little moment.</p>
+      <label for="personal-note" style="display:block; margin-top:18px; margin-bottom:8px; color:var(--ink); font-weight:600;">Personal message before sending:</label>
+      <textarea id="personal-note" placeholder="Write your own personal message here..."></textarea>
+      <div style="margin-top:18px;"><a class="btn" href="#hero">For you, always</a></div>
+    </div>
+  </section>
+
+  <footer>
+    made with love, humor, and endless gratitude ♡
+  </footer>
+</body>
 </html>
